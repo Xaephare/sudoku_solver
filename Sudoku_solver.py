@@ -52,17 +52,29 @@ def solve_sudoku(grid, row, col):
     # If no number worked, backtrack
     return False
 
-grid = [[0, 8, 0, 0, 6, 7, 1, 0, 3],
-        [0, 0, 4, 0, 8, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 2, 0, 0],
-        [0, 4, 0, 0, 0, 1, 8, 0, 7],
-        [5, 0, 0, 9, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 6, 0],
-        [0, 0, 9, 1, 0, 0, 3, 0, 6],
-        [0, 3, 0, 0, 0, 0, 0, 2, 0],
-        [0, 0, 0, 0, 0, 6, 0, 4, 0]]
+
+def print_grid(grid):
+    for i in range(GRIDSIZE):
+        if i % SECTIONSIZE == 0 and i != 0:
+            for j in range(2*GRIDSIZE-1):
+                print("-", end="")
+            print()
+        for j in range(GRIDSIZE):
+            print(grid[i][j],end="|" if j == 2 or j == 5 else " ")
+        print()
+
+
+grid = [[0, 1, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 3, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0]]
 
 if solve_sudoku(grid, 0, 0):
-    print(grid)
+    print_grid(grid)
 else:
     print("No solution exists.")
